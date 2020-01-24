@@ -18,7 +18,7 @@ $ pkg install git
 $ pkg install python2
 $ pip2 install requests
 $ git clone https://github.com/Fukur0-3XP/PHD
-$ cd Phd
+$ cd PHD
 $ python2 Phd.py
 
 Nanti Kalian Akan DiSuruh Input File, Isi File Dengan Email Dan Password Yang Mau Kalian Cek. Contoh :
