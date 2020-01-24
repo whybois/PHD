@@ -86,7 +86,7 @@ def main():
 				z = y.find('li', {'class' : 'owner-poin'}).text
 				
 				print(''+H+'['+W+'LIVE'+H+'] '+W+'USER : '+C+str(us)+W+' | '+W+'PASS : '+C+str(ps)+W+' POIN : '+str(z[6:]))
-				a.append('[ LIVE ] [ USER : '+str(us)+' | PASS : '+str(ps)+' ] [ POIN : '+str(z[6:])+' ] Checked On https://github.com/Fukur0-3XP/Phd')
+				a.append('[ LIVE ] [ USER : '+str(us)+' | PASS : '+str(ps)+' ] [ POIN : '+str(z[6:])+' ] Checked On https://github.com/Fukur0-3XP/PHD')
 			
 			else:
 				print(''+A+'['+W+'ERROR'+A+'] '+W+'USER : '+C+str(us)+W+' | '+W+'PASS : '+C+str(ps))
