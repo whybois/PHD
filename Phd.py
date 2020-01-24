@@ -10,6 +10,7 @@
 
 from bs4 import BeautifulSoup as Bs
 from mechanize import Browser
+from time import sleep
 import mechanize, cookielib, requests, sys, os
 
 M = '\033[1;31m'
