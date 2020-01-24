@@ -102,5 +102,10 @@ def main():
 		print
 		d.close()
 	
+	except IOError:
+		print
+		print(M+'File Tidak Di Temukan !')
+		print
+	
 if __name__ == '__main__':
 	main()
