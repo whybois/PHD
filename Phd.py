@@ -100,7 +100,7 @@ def main():
 		print(W+'Hasil Live : '+C+str(len(live)))
 		print(W+'Hasil Tersimpan Di File "'+C+'Live.txt'+W+'"') 
 		print
-		d.close()
+		c.close()
 	
 	except IOError:
 		print
