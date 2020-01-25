@@ -16,7 +16,9 @@ Termux :
 
 $ pkg install git
 $ pkg install python2
+$ pip2 install bs4
 $ pip2 install requests
+$ pip2 install mechanize
 $ git clone https://github.com/Fukur0-3XP/PHD
 $ cd PHD
 $ python2 Phd.py
